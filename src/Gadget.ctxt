@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Gadget
+comment0.text=\n\ this\ is\ the\ main\ class\ with\ four\ attributes\ and\ and\ two\ subclasses\ which\ are\ Mobile\ and\ mp3.\n\ @author\ (Gideon\ Tibamanya)\ (18026660)\n\ @version\ (08/03/2019)\n
+comment1.params=TheCost\ TheWeight\ TheModel\ TheSize
+comment1.target=Gadget(double,\ int,\ java.lang.String,\ java.lang.String)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Gadget.\ includes\ cost,weight,model,size.\n\ \n
+comment2.params=
+comment2.target=double\ getPrice()
+comment2.text=\n\ this\ accesor\ method\ returnds\ the\ price\n
+comment3.params=
+comment3.target=int\ getweight()
+comment3.text=\n\ this\ accesor\ method\ returnds\ the\ weight\n
+comment4.params=
+comment4.target=java.lang.String\ getModel()
+comment4.text=\n\ this\ accesor\ method\ returnds\ the\ model\n
+comment5.params=
+comment5.target=java.lang.String\ getSize()
+comment5.text=\n\ this\ accesor\ method\ returns\ the\ size\n
+comment6.params=
+comment6.target=void\ print()
+comment6.text=\n\ Mutator\ method\ to\ display\ the\ model,\ price,weight,and\ size\ \n
+numComments=7

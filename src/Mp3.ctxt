@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Mp3
+comment0.text=\n\ This\ is\ the\ Mp3\ Class.\n\ @author\ (Gideon\ Tibamanya)\n\ @version\ (08/03/2019)\n
+comment1.params=ThePrice\ TheWeight\ TheModel\ TheSize\ TheMemory
+comment1.target=Mp3(double,\ int,\ java.lang.String,\ java.lang.String,\ int)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ mp3.\n\ initialise\ memory\ available.\n
+comment2.params=
+comment2.target=int\ getMemory()
+comment2.text=\n\ \ this\ mehtod\ returns\ memory\n
+comment3.params=NewMemory
+comment3.target=void\ addMemory(int)
+comment3.text=\n\ this\ method\ adds\ memory.\n
+comment4.params=mSize
+comment4.target=void\ downloadMusic(int)
+comment4.text=\n\ this\ method\ downloads\ music\ with\ conditions.\ \n
+comment5.params=mSize
+comment5.target=void\ delete(int)
+comment5.text=\n\ this\ method\ deletes\ music\ and\ displays\ when\ a\ song\ has\ been\ deleted\ \n
+comment6.params=
+comment6.target=void\ print()
+comment6.text=\n\ \ this\ method\ prints\ all\ the\ details\ of\ the\ Mp3\ class\ \n
+numComments=7

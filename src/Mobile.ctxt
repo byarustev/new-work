@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Mobile
+comment0.text=\n\ this\ is\ the\ Mobile\ subclass\ of\ the\ Gadget\ class\ which\ allows\ to\ add\ credit\ and\ make\ calls.\n\n\ @author\ (Gideon\ Tibamanya)\ (1802660)\n\ @version\ (08\ /\ 03\ /\ 2019)\n
+comment1.params=theCost\ theWeight\ theModel\ theSize\ theMinutes
+comment1.target=Mobile(double,\ int,\ java.lang.String,\ java.lang.String,\ int)
+comment1.text=\n\ constructor\ for\ objects\ in\ the\ Mobile\ class\n\ initialise\ credit\n
+comment2.params=newCredit
+comment2.target=void\ addCredit(int)
+comment2.text=\n\ Mutator\ Method\ to\ be\ able\ to\ add\ credit\n
+comment3.params=
+comment3.target=int\ getCredit()
+comment3.text=\n\ accessor\ method\ to\ return\ credit\n
+comment4.params=phone\ duration
+comment4.target=void\ MakeCall(java.lang.String,\ int)
+comment4.text=\n\ this\ method\ \ Makes\ calls\ and\ displays\ the\ duration\n
+comment5.params=
+comment5.target=void\ print()
+comment5.text=\n\ this\ method\ displays\ details\ of\ the\ Mobile\n
+numComments=6

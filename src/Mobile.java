@@ -1,4 +1,3 @@
-
 /**
  * this is the Mobile subclass of the Gadget class which allows to add credit and make calls.
  *

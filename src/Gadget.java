@@ -1,4 +1,3 @@
-
 /**
  * this is the main class with four attributes and and two subclasses which are Mobile and mp3.
  * @author (Gideon Tibamanya) (18026660)

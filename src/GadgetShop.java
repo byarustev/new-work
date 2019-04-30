@@ -1,10 +1,19 @@
+/**
+ * This is the GadgetShop Class.
+ * @author (Gideon Tibamanya)
+ * @version (27/04/2019)
+ */
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 
-public class GadgetShop {
+public class GadgetShop implements ActionListener {
+
+    /**
+     * instance variables for GadgetShop class
+     */
 
     private ArrayList<Gadget> gadgetList = new ArrayList<>();
 
@@ -44,11 +53,19 @@ public class GadgetShop {
     private JButton makeCallBtn = new JButton("Make A Call");
     private JButton downloadMusicBtn = new JButton("Download Music");
 
+    /**
+     * This is the main method which makes an instance of GadgetShop and uses it to initialise GUI elements  .
+     * @param args Unused.
+     * @return None.
+     */
     public static void main(String[] args) {
         GadgetShop gadgetShop = new GadgetShop();
         gadgetShop.initialGuiComponents();
     }
 
+    /**
+     * This is the initialGuiComponents method which uses instance variables for GadgetShop to set up the gui for the system  .
+     */
     public void initialGuiComponents() {
         JFrame.setDefaultLookAndFeelDecorated(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -109,53 +126,34 @@ public class GadgetShop {
         downloadPanel.add(downloadTextField);
         frame.add(downloadPanel);
 
-        //display no.
+        //display number
         displayNoPanel.add(new JLabel("Display No:"));
         displayNoPanel.add(displayNoTextField);
         frame.add(displayNoPanel);
         frame.add(makeCallBtn);
         frame.add(downloadMusicBtn);
 
-        // add listeners
-        addMobileBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-               addMobile();
-            }
-        });
-
-        clearBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                clearFields();
-            }
-        });
-
-        addMp3Btn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                addMp3();
-            }
-        });
-
-        displayAllBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                displayAll();
-            }
-        });
-
-        makeCallBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                makeCall();
-            }
-        });
-
-        downloadMusicBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                downLoadMusic();
-            }
-        });
+        //add a listener to the different buttons
+        addMobileBtn.addActionListener(this);
+        clearBtn.addActionListener(this);
+        addMp3Btn.addActionListener(this);
+        displayAllBtn.addActionListener(this);
+        makeCallBtn.addActionListener(this);
+        downloadMusicBtn.addActionListener(this);
 
         frame.pack();
         frame.setVisible(true);
     }
+
+
+
+
+    /***
+     * this is the addMobile method it gets model,size from their respective text fields
+     * it also calls different methods that return price, weight and credit
+     * and then uses these values to create an instance of Mobile and add it to the gadgetList
+     * @return None
+     */
 
     public void addMobile() {
         String model = modelTextField.getText();
@@ -171,11 +169,17 @@ public class GadgetShop {
 
     }
 
+    /***
+     * this is the addMp3 method. It gets model,size from their respective text fields
+     * it also calls different methods that return price, weight and memory
+     * and then uses these values to create an instance of Mp3 and add it to the gadgetList
+     * @return None
+     */
     public void addMp3() {
         String model = modelTextField.getText();
+        String size = sizeTextField.getText();
         double price = getCost();
         int weight = getWeight();
-        String size = sizeTextField.getText();
         int memory = getMemory();
         if(price!=0 && weight!=0 && memory!=0){
             gadgetList.add(new Mp3(price, weight, model, size, memory));
@@ -184,10 +188,15 @@ public class GadgetShop {
         }
     }
 
+    /***
+     * this is the displayAll method.
+     * It iterates through each gadget in gadgetList as it
+     * prints it's display number and also calls print method
+     * on that object to display the gadgets details
+     *
+     * @return None
+     */
     public void displayAll() {
-        //display the display no.
-        //method to display each item in the list is called
-
         for (int i=0; i<gadgetList.size(); i++) {
             System.out.println("Display no.  "+i);
             gadgetList.get(i).print();
@@ -195,6 +204,12 @@ public class GadgetShop {
         JOptionPane.showMessageDialog(frame, "Display done check console");
     }
 
+    /***
+     * this is the makeCall method.
+     * It gets phoneNumber from its text field,
+     * checks its validity then calls makeCall method on a Mobile class object
+     * @return None
+     */
     public void makeCall() {
         String phoneNumber = phoneNoTextField.getText();
         int duration = getDuration();
@@ -209,8 +224,13 @@ public class GadgetShop {
         }
     }
 
+    /***
+     * this is the makeCall method.
+     * It gets phoneNumber from its text field,
+     * checks its validity then calls makeCall method on a Mobile class object
+     * @return None
+     */
     public void downLoadMusic() {
-        //The display number and download size are input via the GUI.
         int downloadSize = getDownloadSize();
         int displayNumber = getDisplayNo();
         if (displayNumber != -1 && displayNumber<gadgetList.size()) {
@@ -223,7 +243,12 @@ public class GadgetShop {
 
     }
 
-
+    /***
+     * this is the getDisplayNo method.
+     * It gets displayNumber from text field, attempts to convert it to an integer,
+     * if it succeeds, it returns it else returns -1
+     * @return int
+     */
     public int getDisplayNo() {
         int displayNumber = -1;
         String userValue = displayNoTextField.getText();
@@ -236,6 +261,12 @@ public class GadgetShop {
         return displayNumber;
     }
 
+    /***
+     * this is the getDownloadSize method.
+     * It gets download size from text field, attempts to convert it to an integer,
+     * if it succeeds, it returns it else alerts an error and returns 0
+     * @return int
+     */
     public int getDownloadSize() {
         String downloadSize = downloadTextField.getText();
         try {
@@ -247,6 +278,12 @@ public class GadgetShop {
         }
     }
 
+    /***
+     * this is the getDuration method.
+     * It gets duration from text field, attempts to convert it to an integer,
+     * if it succeeds, it returns it else alerts an error and returns 0
+     * @return int
+     */
     public int getDuration() {
         String duration = durationTextField.getText();
         try {
@@ -258,6 +295,12 @@ public class GadgetShop {
         }
     }
 
+    /***
+     * this is the getCost method.
+     * It gets price from text field, attempts to convert it to a double,
+     * if it succeeds, it returns it else alerts an error and returns 0
+     * @return double
+     */
     public double getCost() {
         String price = priceTextField.getText();
         try {
@@ -270,6 +313,12 @@ public class GadgetShop {
 
     }
 
+    /***
+     * this is the getWeight method.
+     * It gets weight from text field, attempts to convert it to an int,
+     * if it succeeds, it returns it else alerts an error and returns 0
+     * @return int
+     */
     public int getWeight() {
         String weight = weightTextField.getText();
         try {
@@ -281,6 +330,12 @@ public class GadgetShop {
         }
     }
 
+    /***
+     * this is the getCredit method.
+     * It gets credit from text field, attempts to convert it to an int,
+     * if it succeeds, it returns it else alerts an error and returns 0
+     * @return int
+     */
     public int getCredit() {
         String credit = creditTextField.getText();
         try {
@@ -292,6 +347,12 @@ public class GadgetShop {
         }
     }
 
+    /***
+     * this is the getMemory method.
+     * It gets memory from text field, attempts to convert it to an int,
+     * if it succeeds, it returns it else alerts an error and returns 0
+     * @return int
+     */
     public int getMemory() {
         String memory = memoryTextField.getText();
         try {
@@ -303,6 +364,11 @@ public class GadgetShop {
         }
     }
 
+    /***
+     * this is the clearFields method.
+     * it sets text in all text fields to an empty string
+     * @return None
+     */
     public void clearFields() {
         modelTextField.setText("");
         priceTextField.setText("");
@@ -314,5 +380,40 @@ public class GadgetShop {
         durationTextField.setText("");
         downloadTextField.setText("");
         displayNoTextField.setText("");
+    }
+
+    /***
+     * this is the actionPerformed method.
+     * It calls a given method basing on the button that has been pressed
+     * @param e ActionEvent
+     * @return None
+     */
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource()==addMobileBtn){
+            addMobile();
+        }
+
+        if(e.getSource()==clearBtn){
+            clearFields();
+        }
+
+        if(e.getSource()==addMp3Btn){
+            addMp3();
+        }
+
+        if(e.getSource()==displayAllBtn){
+            displayAll();
+        }
+
+        if(e.getSource()==makeCallBtn){
+            makeCall();
+        }
+
+        if(e.getSource()==downloadMusicBtn){
+            downLoadMusic();
+        }
+
     }
 }
