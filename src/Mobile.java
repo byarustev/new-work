@@ -39,7 +39,7 @@ public class Mobile extends Gadget {
      * this method  Makes calls and displays the duration
      */
     public void MakeCall(String phone, int duration) {
-        if (credit == 0) {
+        if (this.credit == 0) {
             System.out.println(" ------------------------------------------------------");
             System.out.println("  ");
             System.out.println(" You need more than 0 credit to make a phone call, please toup ");

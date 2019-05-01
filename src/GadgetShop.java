@@ -213,14 +213,18 @@ public class GadgetShop implements ActionListener {
     public void makeCall() {
         String phoneNumber = phoneNoTextField.getText();
         int duration = getDuration();
-
         int displayNumber = getDisplayNo();
-        if (displayNumber != -1 && displayNumber<gadgetList.size()) {
-            Mobile ourMobile = (Mobile) gadgetList.get(displayNumber);
-            ourMobile.MakeCall(phoneNumber, duration);
-            JOptionPane.showMessageDialog(frame, "Make call performed check console");
+        
+        if(phoneNumber==""){
+            JOptionPane.showMessageDialog(frame, "Phone number is required");
         }else{
-            JOptionPane.showMessageDialog(frame, "Invalid Display no");
+            if (displayNumber != -1 && displayNumber<gadgetList.size()) {
+                Mobile ourMobile = (Mobile) gadgetList.get(displayNumber);
+                ourMobile.MakeCall(phoneNumber, duration);
+                JOptionPane.showMessageDialog(frame, "Make call performed check console");
+            }else{
+                JOptionPane.showMessageDialog(frame, "Invalid Display no");
+            }
         }
     }
 
